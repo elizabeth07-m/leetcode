@@ -1,0 +1,39 @@
+func isValid(s string) bool {
+    
+    var a []byte
+    ma :=map[byte]byte{
+        '(':')',
+        '{':'}',
+        '[':']',
+    }
+
+
+    for i:=0; i<len(s); i++ {
+
+        if s[i]=='(' ||s[i]=='{' || s[i]=='[' {
+
+            a=append(a,s[i])
+        }else{
+            if len(a)>0 && ma[a[len(a)-1]] == s[i]{
+             a = a[:len(a)-1]
+            
+            }else{
+                return false
+            }
+            
+
+
+        }
+
+            
+        }
+        if len(a)>0{
+            return false
+        }
+
+      
+
+return true
+    
+    
+}
