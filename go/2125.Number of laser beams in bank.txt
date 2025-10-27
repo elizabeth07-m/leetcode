@@ -1,0 +1,13 @@
+import "strings"
+
+func numberOfBeams(bank []string) int {
+  res, prev := 0, 0
+  for _, line := range bank {
+    if curr := strings.Count(line, "1"); curr > 0 {
+      res += curr * prev
+      prev = curr
+    }
+  }
+  
+  return res
+}
