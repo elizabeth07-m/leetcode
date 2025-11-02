@@ -1,0 +1,20 @@
+func maxFrequency(nums []int, k int, numOperations int) int {
+    diff := map[int]int{}
+    freq := map[int]int{}
+    maxNum := 0
+
+    for _, num := range nums {
+        diff[max(0, num - k)]++
+        diff[min(1e5+1, num + k + 1)]--
+        freq[num]++
+        maxNum = max(maxNum, num)
+    }
+
+    overlap := 0
+    out := 0
+    for i := range maxNum+1 {
+        overlap += diff[i]
+        out = max(out, freq[i] + min(overlap - freq[i], numOperations))
+    }
+    return out
+}
